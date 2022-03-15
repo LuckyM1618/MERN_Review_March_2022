@@ -34,16 +34,13 @@ class Effect extends Card {
 
     play(target) {
         if(target instanceof Unit) {
-            if(this.stat === 'Power') {
-                target.power += this.magnitude;
-                console.log(`${this.name} played against ${target.name}! Power is now ${target.power}`);
-            } else if(this.stat === 'Resilience') {
-                target.resilience += this.magnitude;
-                console.log(`${this.name} played against ${target.name}! Resilience is now ${target.resilience}`);
-            }
+            target[this.stat] += this.magnitude;
+            console.log(`${this.name} played on ${target.name}! ${this.stat.charAt(0).toUpperCase() + this.stat.slice(1)} is now ${target[this.stat]}!`);
         } else {
             console.log("Target must be unit!");
         }
+
+        return this;
     }
 }
 
