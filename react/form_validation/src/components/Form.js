@@ -35,9 +35,6 @@ const Form = props => {
 
     const createUser = e => {
         e.preventDefault();
-        // const firstName = state.firstName.value;
-        // const lastName = state.lastName.value;
-        // const email = state.email.value;
         const newUser = {
             firstName: state.firstName.value,
             lastName: state.lastName.value,
@@ -53,6 +50,10 @@ const Form = props => {
                     <label>First Name: </label>
                     <input type="text" name="firstName" value={state.firstName.value} onChange={ handleChange } />
                 </div>
+                {
+                    state.firstName.error !== null && (
+                        <p className="error">{state.firstName.error}</p>
+                )}
 
                 <div>
                     <label>Last Name: </label>
